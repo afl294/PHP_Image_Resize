@@ -1,7 +1,7 @@
 https://github.com/afl294/PHP_Image_Resize
 
 1. Create a folder named "afl294" in your /www directory
-2. Put all the php files into the "afl294" folder in your /www
+2. Put all files into the "afl294" folder in your /www
 3. Create a new database via localhost/phpmyadmin named "afl294"
 4. Click on the new database, then import the afl294.sql file
 5. Make sure the database username is "root" and password is "" (empty)
