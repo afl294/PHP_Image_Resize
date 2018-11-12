@@ -3,21 +3,48 @@
 
 <body>
 
-<form action="resize_image.php" method="post" enctype="multipart/form-data">
-    <p>Select a JPG image to upload:</p>
-	<br>
-    <input type="file" name="file_upload" id="fileToUpload" accept="image">
+<form action="login.php" method="post" enctype="multipart/form-data">
+	<div>Existing User Login</div>
 	
-	<br><br>
+	<div>
+		<div>Username:</div>
+		<input type="text" name="username">
+	</div>
+
+	<div>
+		<div>Password:</div>
+		<input type="password" name="password">
+	</div>
 	
-	<p>Width:</p><input type="number" name="width" min="10" max="5000" value="200">
-	<br>
-	
-	<p>Height</p><input type="number" name="height" min="10" max="5000" value="200">
-	
-	<br><br>
-    <input type="submit" value="Upload Image" name="submit">
+	<div>
+		<input type="submit" value="Log In" name="submit">
+	</div>   
 </form>
+
+
+
+
+
+<form action="register.php" method="post" enctype="multipart/form-data">
+	<div>New User Registration</div>
+	
+	<div>
+		<div>Username:</div>
+		<input type="text" name="username">
+	</div>
+
+	<div>
+		<div>Password:</div>
+		<input type="password" name="password">
+	</div>
+	
+	<div>
+		<input type="submit" value="Register" name="submit">
+	</div>   
+</form>
+
+
+
 
 
 </body>

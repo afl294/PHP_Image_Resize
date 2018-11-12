@@ -1,13 +1,31 @@
 <html>
-<head>
-
-
-</head>
-
-<body>
 
 <?php
 
+
+include 'base.php';
+
+$user = check_login_token($mysqli);
+if($user == null){
+	echo "User not logged in";
+	header("Location: index.php");
+	exit();
+}
+
+if(!isset($_FILES["file_upload"])){
+	header("Location: home.php");
+	exit();
+}
+
+if(!isset($_POST["width"])){
+	header("Location: home.php");
+	exit();
+}
+
+if(!isset($_POST["height"])){
+	header("Location: home.php");
+	exit();
+}
 
 
 function resize_image($html_file_input_name, $new_img_width, $new_img_height) {
@@ -29,11 +47,13 @@ $new_width = (int)$_POST['width'];
 $new_height = (int)$_POST['height'];
 
 
-
 $new_image_path = resize_image("file_upload", $new_width, $new_height);
-echo "<image src='" . $new_image_path . "'>";
-echo "<p>Resized image: " . $new_image_path . "</p>";
-echo "<a href='/resize_image/index.php'>Resize another image</a>";
+
+$upload_id = execute_insert_query($mysqli, "INSERT INTO upload(user_id, path) VALUES (?, ?)", array($user['id'], $new_image_path), "ss");
+
+header("Location: home.php");
+
+
 
 
 
@@ -121,9 +141,6 @@ class PHPImage {
 
 }
 ?>
-
-</body>
-
 
 </html>
 
