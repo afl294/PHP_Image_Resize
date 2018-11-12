@@ -2,10 +2,8 @@
 
 include 'base.php';
 
-
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");
-define("SECURE", FALSE);    // FOR DEVELOPMENT ONLY!!!!
 
 if(!array_key_exists('username', $_POST)){
 	echo "Username not set";

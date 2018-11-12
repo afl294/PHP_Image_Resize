@@ -4,7 +4,6 @@ include 'base.php';
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");
  
-define("SECURE", FALSE);    // FOR DEVELOPMENT ONLY!!!!
 
 
 if(!array_key_exists('username', $_POST)){
@@ -50,11 +49,6 @@ function register($username, $password, $mysqli) {
 	//Create new user in database
 	$user_id = execute_insert_query($mysqli, "INSERT INTO user(name, password, salt) VALUES (?, ?, ?)", array($username, $hash_password, $new_salt), "sss");
 	
-	//Select newly created user from database
-	//$user = execute_select_query($mysqli, "SELECT id, name, password, salt FROM user WHERE username = ? LIMIT 1", $username);
-	//echo $user['id'] . $user['name'];
-	
-	//echo "???????????????????????????";
 	//Delete the old login token
 	execute_delete_query($mysqli, "DELETE FROM login_token WHERE user_id = ?", $user_id);
 

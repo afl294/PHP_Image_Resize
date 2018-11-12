@@ -2,7 +2,6 @@
 
 include 'base.php';
 
-
 if(isset($_SESSION['token'])){
 	unset($_SESSION['token']);
 }
