@@ -57,6 +57,7 @@ function register($username, $password, $mysqli) {
 	execute_insert_query($mysqli, "INSERT INTO login_token(token, user_id) VALUES (?, ?)", array($new_token, $user_id), "ss");
 
 	$user['login_token'] = $new_token;
+	$user['id'] = $user_id;
 	
 	return $user;
 }
@@ -70,7 +71,11 @@ if($user == null){
 
 //Store newly created login token into users session
 $_SESSION['token'] = $user['login_token'];
-	
+
+
+//Log successful account creation
+log_activity($mysqli, $user['id'], "create_account_success", "");
+
 
 $mysqli->close();
 

@@ -45,6 +45,17 @@ function execute_insert_query($mysqli, $sql_command, $params = null, $types = "s
 	}	
 }
 
+
+
+function log_activity($mysqli, $user_id, $type, $text){	
+	$sql_command = "INSERT INTO log(user_id, type, text) VALUES (?, ?, ?)";
+	$params = array($user_id, $type, $text);
+	$types = "sss";
+
+	return execute_insert_query($mysqli, $sql_command, $params, $types);	
+}
+
+
  
 function execute_select_query($mysqli, $sql_command, $param_1 = null, $return_raw = false){
 	$stmt = $mysqli->prepare($sql_command);

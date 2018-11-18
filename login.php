@@ -55,11 +55,18 @@ function login($username, $password, $mysqli) {
 		
 		//Store login token for 
 		$_SESSION['token'] = $new_token;
+		
+		//Log successful login
+		log_activity($mysqli, $user['id'], "login_success", "");
 
 		return true;
 	} else {
 		echo "User failed to log in";
 		execute_insert_query($mysqli, "INSERT INTO login_attempt(user_id) VALUES (?)", array($user['id']), "s");
+		
+		//Log unsuccessful login
+		log_activity($mysqli, $user['id'], "login_fail", "");
+		
 		return false;
 	}
 }

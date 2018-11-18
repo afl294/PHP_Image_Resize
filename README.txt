@@ -17,7 +17,19 @@ Password: test
 10. Logout by clicking the logout link or go to localhost/afl294/logout.php
 11. Create a new account on localhost/afl294/index.php
 
-Security:
+Logging (Assignment 3):
+The function "log_activity($mysqli, $user_id, $type, $text)" in base.php line 50
+is used across the program to log login failures/successes, account creation, and image uploads. It is used by passing the user_id who is performing the action, the type of action that the user is performing, and any additional text information that needs to be stored, such as the upload id of image uploads.
+
+An example function call from "resize_image.php" line 56
+//Log image upload
+log_activity($mysqli, $user['id'], "image_upload", '{"upload_id": ' . $upload_id . '}');
+
+
+
+
+
+Security (Assignment 2):
 1. Hash + Salt passwords
 I used stored a sha512 of the cleartext password + a random salt into the database so that way even if the database information is compromised, hackers would not be able to identify users passwords
 

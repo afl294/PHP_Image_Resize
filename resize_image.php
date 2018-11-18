@@ -51,6 +51,10 @@ $new_image_path = resize_image("file_upload", $new_width, $new_height);
 
 $upload_id = execute_insert_query($mysqli, "INSERT INTO upload(user_id, path) VALUES (?, ?)", array($user['id'], $new_image_path), "ss");
 
+
+//Log image upload
+log_activity($mysqli, $user['id'], "image_upload", '{"upload_id": ' . $upload_id . '}');
+
 header("Location: home.php");
 
 
